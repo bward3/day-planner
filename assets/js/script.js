@@ -23,13 +23,14 @@ var init = function () {
         newHour.text(hour + ' ' + tod);
         newHour.addClass('hour');
         var newBlock = $('<textarea>');
+        newBlock.on('keydown', checkEnter);
         var newBtn = $('<button>');
         newBtn.click(saveBtnHandler);
         newBtn.addClass('saveBtn');
         //add icon to save buttons
         newBtn.html('<i class="fa-solid fa-floppy-disk"></i>');
         newBlock.addClass('time-block');
-        newBlock.attr('tabindex', i-8);
+        newBlock.attr('tabindex', i - 8);
         newRow.append(newHour);
         newRow.append(newBlock);
         newRow.append(newBtn);
@@ -43,6 +44,22 @@ var init = function () {
     clearBtn.click(clearBtnHandler);
     clearBtn.addClass('clearBtn');
     $('.clearDiv').append(clearBtn);
+}
+
+var checkEnter = function (event) {
+    // Get the code of pressed key
+    const keyCode = event.which;
+
+    // 13 represents the Enter key
+    if (keyCode === 13 && !event.shiftKey) {
+        // Don't generate a new line
+        event.preventDefault();
+
+        var timeBlock = $(event.target);
+        var index = timeBlock.parent().index();
+        var text = timeBlock.val();
+        ls.setItem(index, text);
+    }
 }
 
 //gets current time and sets block elements' styling accordingly
@@ -72,7 +89,7 @@ var checkTodos = function () {
     for (i = 0; i < len; i++) {
         var text = ls.getItem(i.toString());
         if (text) {
-            console.log('text',text);   
+            console.log('text', text);
             containerEl.children().eq(i).children().eq(1).val(text);
         }
     }
@@ -83,5 +100,7 @@ var clearBtnHandler = function (event) {
     ls.clear();
     $('.time-block').val('');
 }
+
+
 
 init();
