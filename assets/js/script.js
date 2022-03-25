@@ -45,7 +45,7 @@ var init = function () {
     $('.clearDiv').append(clearBtn);
 }
 
-//
+//gets current time and sets block elements' styling accordingly
 var checkTOD = function (hour, blockEl) {
     if (hour < time.hour()) {
         blockEl.addClass('past');
@@ -56,8 +56,8 @@ var checkTOD = function (hour, blockEl) {
     }
 }
 
+//on click of save button, save content within time-block element to localStorage
 var saveBtnHandler = function (event) {
-    console.log('clicked');
     var clicked = event.target;
     var timeBlock = $(clicked).parent().children().eq(1);
     var index = timeBlock.parent().index();
@@ -65,6 +65,8 @@ var saveBtnHandler = function (event) {
     ls.setItem(index, text);
 }
 
+//check localStorage for past entries
+//set text to past entry if it exists
 var checkTodos = function () {
     var len = containerEl.children().length;
     for (i = 0; i < len; i++) {
@@ -76,9 +78,10 @@ var checkTodos = function () {
     }
 }
 
+//clears localStorage and empties all containers
 var clearBtnHandler = function (event) {
     ls.clear();
-    location.reload();
+    $('.time-block').val('');
 }
 
 init();

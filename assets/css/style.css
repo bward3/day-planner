@@ -2,6 +2,7 @@ body {
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   line-height: 1;
+  background-color: #eef4f5;
 }
 
 textarea {
@@ -10,7 +11,6 @@ textarea {
   resize: none;
   color: #000000;
   border-left: 2px solid black;
-  /* border-top: 1px solid black; */
   padding: 10px;
 }
 
@@ -19,8 +19,8 @@ textarea {
   background-color: transparent;
   color: black;
   border-radius: 0;
-  border-bottom: 10px solid black;
-  padding: 1vh;
+  border-bottom: 6px solid black;
+  padding: 2.5vh;
 }
 
 .description {
@@ -45,7 +45,7 @@ textarea {
 }
 
 .hour {
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
   color: #000000;
   border-top: 1px dashed #000000;
   width: 10%;
@@ -79,11 +79,11 @@ button {
   border-bottom-right-radius: 15px;
 }
 
-.saveBtn:hover {
+button:hover {
   background-color: #4edfff;
 }
 
-.saveBtn:active {
+button:active {
   background-color: #328da1;
 }
 
@@ -93,6 +93,7 @@ button {
 }
 
 .clearDiv {
+  margin-top: .1vh;
   position: relative;
   width: 100%;
   display: flex;
@@ -102,16 +103,40 @@ button {
 .clearBtn {
   text-transform: uppercase;
   font-weight: bold;
-  font-size: 150%;
+  font-size: 140%;
   width: 20%;
-  padding: 1.5rem;
-  left: 45%;
+  padding: 1.4vw;
   margin-top: 1rem;
-  align-self: center;
   border-radius: 10px;
 }
 
 .fa-solid {
   font-size: 1.5rem;
   color: #d6fffd;
+}
+
+@media screen and (max-width: 790px)  {
+  .clearBtn {
+    font-size: 100%;
+  }
+}
+
+
+@media screen and (max-width: 640px)  {
+  .clearBtn {
+    font-size: 70%;
+  }
+  .fa-solid {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 345px)  {
+  .clearBtn {
+    font-size: 50%;
+  }
+  .fa-solid {
+    font-size: .5rem;
+  }
+
 }
